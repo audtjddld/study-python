@@ -1,5 +1,6 @@
 import pandas as pd
 import sys
+import os
 
 
 def main(argv):
@@ -27,6 +28,11 @@ def main(argv):
     readCsvFile.to_csv(tsvFileName, sep='\t', encoding='utf-8', index=False)
     print("conversion from '" + fileName + "' to '" + fileName.replace(".xlsx", ".tsv") + "' complete")
     # 종료
+
+    # csv file 삭제
+    if os.path.isfile(csvFileName):
+        os.remove(csvFileName)
+        # print("csv file 제거")
     sys.exit(0)
 
 
